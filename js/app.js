@@ -2,10 +2,14 @@ let debug = false;
 let game = true;
 
 // Enemies our player must avoid
-var Enemy = function (x, y) {
-    this.x = x;
-    this.y = y;
+var Enemy = function (x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
+    this.x = x;
+    this.y = y + 55;
+    this.step = 101;
+    this.boundary = this.step * 5;
+    this.resetPos = -this.step;
+    this.speed = speed;
 };
 
 // Update the enemy's position, required method for game
@@ -14,9 +18,19 @@ Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
+    //if enemy has not passed edge of canvas
+    if(this.x < this.boundary) {
+        //move forward at the set speed and multiply it by dt to keep steady pace
+        this.x += this.speed * dt;
+    } else {
+        //reset x to 0
+        this.x = this.resetPos;
+    }
+
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -70,15 +84,19 @@ Player.prototype.handleInput = function (input) {
     }
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-const allEnemies = [];
+
 const player = new Player;
+/*create enemies, start one block off screen*/
+const bug1 = new Enemy(-101,0,200);
+const bug2 = new Enemy(-101,83,150);
+const bug3 = new Enemy(-101*3,83, 150);
+const bug4 = new Enemy(-101*2, 83*2, 100);
+const allEnemies = [];
+allEnemies.push(bug1,bug2, bug3,bug4);
 
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+
+// This listens for key presses and sends the keys to the Player.handleInput() method. 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
