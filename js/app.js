@@ -43,10 +43,10 @@ let Player = function (x, y) {
     this.step = 101;
     this.jump = 83;
     this.startX = this.step * 2;
-    this.startY = (this.jump * 5) - 25;
+    this.startY = (this.jump * 4) + 55;
     this.x = this.startX;
     this.y = this.startY;
-
+    this.winner = false;
 }
 
 Player.prototype.render = function () {
@@ -54,9 +54,22 @@ Player.prototype.render = function () {
 }
 
 Player.prototype.update = function (dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    // check player's position against enemies
+    for(let enemy of allEnemies) {
+        /*  Check if player and an enemy are on the same row
+            AND
+            Chec
+        */
+        if(this.y === enemy.y && (this.x < enemy.x + 30) && this.x + 30 > enemy.x){
+            this.x = this.startX;
+            this.y = this.startY;
+        }
+    }
+
+    //check winning conditions
+    if(this.y <= 55) {
+        this.winner = true;
+    }
 };
 
 Player.prototype.handleInput = function (input) {
@@ -107,3 +120,5 @@ document.addEventListener('keyup', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
