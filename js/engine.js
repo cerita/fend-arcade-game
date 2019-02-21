@@ -25,7 +25,7 @@ var Engine = (function (global) {
         lastTime,
         id;
     
-        const modal = document.querySelector(".overlay");
+        const modal = document.querySelector(".winner-overlay");
         const restartBtn = document.querySelector(".winner-modal-button");
 
     canvas.width = 505;
