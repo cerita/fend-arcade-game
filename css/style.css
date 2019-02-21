@@ -1,3 +1,42 @@
 body {
     text-align: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+
+.winner-overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.5);
+    display: flex;
+}
+
+.winner-modal {
+    background-color: rgb(255, 255, 255);
+    height: 30%;
+    width: 40%;
+    padding: 0 1em;
+    margin: auto;
+    border-radius: 8px;
+    text-align: left;
+
+    -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.winner-modal-button {
+    border: none;
+    background-color: transparent;
+    color: darkorchid;
+    padding: 1.4em;
+    font-size: 1em;
+    text-transform: uppercase;
+    float: right;
+}
+
+.hide {
+    display:none;
 }

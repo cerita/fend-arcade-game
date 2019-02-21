@@ -20,8 +20,8 @@ Enemy.prototype.update = function (dt) {
     // all computers.
 
     //if enemy has not passed edge of canvas
-    if(this.x < this.boundary) {
-        //move forward at the set speed and multiply it by dt to keep steady pace
+    if (this.x < this.boundary) {
+        //move forward at the set speed 
         this.x += this.speed * dt;
     } else {
         //reset x to 0
@@ -47,6 +47,11 @@ let Player = function (x, y) {
     this.x = this.startX;
     this.y = this.startY;
     this.winner = false;
+    
+}
+Player.prototype.reset = function() {
+    this.x = this.startX;
+        this.y = this.startY;
 }
 
 Player.prototype.render = function () {
@@ -55,19 +60,18 @@ Player.prototype.render = function () {
 
 Player.prototype.update = function (dt) {
     // check player's position against enemies
-    for(let enemy of allEnemies) {
+    for (let enemy of allEnemies) {
         /*  Check if player and an enemy are on the same row
             AND
             Chec
         */
-        if(this.y === enemy.y && (this.x < enemy.x + 30) && this.x + 30 > enemy.x){
-            this.x = this.startX;
-            this.y = this.startY;
+        if (this.y === enemy.y && (this.x < enemy.x + 30) && this.x + 30 > enemy.x) {
+            this.reset();
         }
     }
 
     //check winning conditions
-    if(this.y <= 55) {
+    if (this.y < 55) {
         this.winner = true;
     }
 };
@@ -85,13 +89,13 @@ Player.prototype.handleInput = function (input) {
             }
             break;
         case 'up':
-            if (this.y > this.jump) {
+            if (this.y > 0) {
                 this.y -= this.jump;
             }
             break;
         case 'down':
             if (this.y < this.jump * 4) {
-            this.y += this.jump;
+                this.y += this.jump;
             }
             break;
     }
@@ -100,12 +104,12 @@ Player.prototype.handleInput = function (input) {
 
 const player = new Player;
 /*create enemies, start one block off screen*/
-const bug1 = new Enemy(-101,0,200);
-const bug2 = new Enemy(-101,83,150);
-const bug3 = new Enemy(-101*3,83, 150);
-const bug4 = new Enemy(-101*2, 83*2, 100);
+const bug1 = new Enemy(-101, 0, 200);
+const bug2 = new Enemy(-101, 83, 150);
+const bug3 = new Enemy(-101 * 3, 83, 150);
+const bug4 = new Enemy(-101 * 2, 83 * 2, 100);
 const allEnemies = [];
-allEnemies.push(bug1,bug2, bug3,bug4);
+allEnemies.push(bug1, bug2, bug3, bug4);
 
 
 
@@ -120,5 +124,3 @@ document.addEventListener('keyup', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-
