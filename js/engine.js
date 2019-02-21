@@ -26,7 +26,7 @@ var Engine = (function (global) {
         id;
     
         const modal = document.querySelector(".overlay");
-        const restartBtn = document.querySelector(".modal-button");
+        const restartBtn = document.querySelector(".winner-modal-button");
 
     canvas.width = 505;
     canvas.height = 606;
