@@ -4,3 +4,9 @@ This game is inspired by the classic game Frogger and is a project for the Front
 ## How To Play
 Use the arrow keys to move your player across the screen, to the water. Don't touch the bugs (*gross*) or you'll have to start all over. 
 
+**Play on Github**: https://cerita.github.io/fend-arcade-game/
+
+**Download & Play**: 
+* *clone* or *download* the repository to your computer
+* Open <index.html> in your browser
+* Try not to run into bugs

@@ -2,7 +2,7 @@ let debug = false;
 let game = true;
 
 // Enemies our player must avoid
-var Enemy = function (x, y, speed) {
+let Enemy = function (x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y + 55;
@@ -47,11 +47,11 @@ let Player = function (x, y) {
     this.x = this.startX;
     this.y = this.startY;
     this.winner = false;
-    
+
 }
-Player.prototype.reset = function() {
+Player.prototype.reset = function () {
     this.x = this.startX;
-        this.y = this.startY;
+    this.y = this.startY;
 }
 
 Player.prototype.render = function () {
@@ -61,11 +61,8 @@ Player.prototype.render = function () {
 Player.prototype.update = function (dt) {
     // check player's position against enemies
     for (let enemy of allEnemies) {
-        /*  Check if player and an enemy are on the same row
-            AND
-            Chec
-        */
-        if (this.y === enemy.y && (this.x < enemy.x + 30) && this.x + 30 > enemy.x) {
+        //if player and enemy are on same square 
+        if (this.y === enemy.y && (this.x < enemy.x + 45) && this.x + 20 > enemy.x) {
             this.reset();
         }
     }
@@ -104,18 +101,17 @@ Player.prototype.handleInput = function (input) {
 
 const player = new Player;
 /*create enemies, start one block off screen*/
-const bug1 = new Enemy(-101, 0, 200);
-const bug2 = new Enemy(-101, 83, 150);
-const bug3 = new Enemy(-101 * 3, 83, 150);
-const bug4 = new Enemy(-101 * 2, 83 * 2, 100);
-const allEnemies = [];
-allEnemies.push(bug1, bug2, bug3, bug4);
 
-
+const allEnemies = [
+    new Enemy(-101, 0, 200),
+    new Enemy(-101, 83, 150),
+    new Enemy(-101 * 3, 83, 150),
+    new Enemy(-101 * 2, 83 * 2, 100)
+];
 
 // This listens for key presses and sends the keys to the Player.handleInput() method. 
 document.addEventListener('keyup', function (e) {
-    var allowedKeys = {
+    let allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
