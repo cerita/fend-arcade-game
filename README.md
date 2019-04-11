@@ -9,4 +9,5 @@ Use the arrow keys to move your player across the screen, to the water. Don't to
 **Download & Play**: 
 * *clone* or *download* the repository to your computer
 * Open <index.html> in your browser
+* Use the arrow keys to move your player forward, backward, or to the side
 * Try not to run into bugs
