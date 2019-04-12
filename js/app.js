@@ -62,7 +62,7 @@ Player.prototype.update = function (dt) {
     // check player's position against enemies
     for (let enemy of allEnemies) {
         //if player and enemy are on same square 
-        if (this.y === enemy.y && (this.x < (enemy.x - 55)) && this.x + 20 > enemy.x) {
+        if (this.y === enemy.y && (this.x < enemy.x + 65) && this.x + 20 > enemy.x) {
             this.reset();
         }
     }
